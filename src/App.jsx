@@ -1,10 +1,16 @@
 import './App.css';
+import Header from './components/Header';
+import SimpleBottomNavigation from './components/MainNav';
 
 function App() {
   return (
-    <div className="App">
-      <h4>Some things are meant to be</h4>
-    </div>
+    <>
+      <Header />
+      <div className="app">
+        peppa pig
+      </div>
+      <SimpleBottomNavigation />
+    </>
   );
 }
 
