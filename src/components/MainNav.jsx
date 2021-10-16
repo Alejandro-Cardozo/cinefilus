@@ -7,6 +7,7 @@ import MovieIcon from '@mui/icons-material/Movie';
 import TvIcon from '@mui/icons-material/Tv';
 import SearchIcon from '@mui/icons-material/Search';
 import { makeStyles } from '@mui/styles';
+import { useHistory } from 'react-router';
 
 const useStyles = makeStyles({
   root: {
@@ -21,6 +22,31 @@ const useStyles = makeStyles({
 export default function SimpleBottomNavigation() {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
+
+  const history = useHistory()
+
+  React.useEffect(() => {
+    switch (value) {
+      case 0:
+        history.push('/')
+        break;
+    
+      case 1:
+        history.push('/movies')
+        break;
+    
+      case 2:
+        history.push('/series')
+        break;
+    
+      case 3:
+        history.push('/search')
+        break;
+    
+      default:
+        break;
+    }
+  }, [value, history])
 
   return (
     <Box sx={{ width: 500 }}>
