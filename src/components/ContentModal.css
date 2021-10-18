@@ -40,7 +40,7 @@
 }
 
 .ContentModal__title {
-  height: 12%;
+  height: auto;
   font-size: 5vw;
   display: flex;
   align-items: center;

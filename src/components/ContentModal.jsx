@@ -9,7 +9,7 @@ import axios from 'axios';
 import { img_500, unavailable, unavailableLandscape } from '../config/config';
 import { YouTube } from '@mui/icons-material';
 
-import './ContentModal.css'
+import './ContentModal.css';
 import Carousel from './Carousel';
 
 const style = {
@@ -37,18 +37,26 @@ export default function ContentModal({ children, media_type, id }) {
 
   useEffect(() => {
     const fetchData = async () => {
-      const { data } = await axios.get(
-        `https://api.themoviedb.org/3/${media_type}/${id}?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`
-      );
+      try {
+        const { data } = await axios.get(
+          `https://api.themoviedb.org/3/${media_type}/${id}?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`
+        );
 
-      setContent(data);
+        setContent(data);
+      } catch (error) {
+        console.log(error);
+      }
     };
 
     const fetchVideo = async () => {
-      const { data } = await axios.get(
-        `https://api.themoviedb.org/3/${media_type}/${id}/videos?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`
-      );
-      setVideo(data.results[0]?.key);
+      try {
+        const { data } = await axios.get(
+          `https://api.themoviedb.org/3/${media_type}/${id}/videos?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`
+        );
+        setVideo(data.results[0]?.key);
+      } catch (error) {
+        console.log(error);
+      }
     };
 
     fetchData();
@@ -117,13 +125,13 @@ export default function ContentModal({ children, media_type, id }) {
                     startIcon={<YouTube />}
                     color='secondary'
                     target='__blank'
-                    href={`https://www.youtube.com/watch/v=${video}`}
+                    href={`https://www.youtube.com/watch?v=${video}`}
                   >
                     Watch the Trailer
                   </Button>
                 </div>
               </div>
-            )}ZPKL9aSgbCw
+            )}
           </Box>
         </Fade>
       </Modal>
