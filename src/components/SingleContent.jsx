@@ -1,6 +1,7 @@
 import { img_300, unavailable } from '../config/config';
 import { Badge } from '@mui/material';
 import './SingleContent.css'
+import ContentModal from './ContentModal';
 
 const SingleContent = ({
   id,
@@ -11,7 +12,7 @@ const SingleContent = ({
   vote_average,
 }) => {
   return (
-    <div className='media'>
+    <ContentModal media_type={media_type} id={id} >
       <Badge badgeContent={vote_average} color={vote_average >= 7 ? 'success' : 'warning'} />
       <img className='poster' src={poster ? `${img_300}/${poster}` : unavailable} alt={title} />
       <b className='title'>{title}</b>
@@ -19,7 +20,7 @@ const SingleContent = ({
         {media_type === 'tv' ? 'TV Series' : 'Movie'}
         <span className="subtitle">{date}</span>
       </span>
-    </div>
+    </ContentModal>
   );
 };
 
