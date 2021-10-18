@@ -10,6 +10,7 @@ import { img_500, unavailable, unavailableLandscape } from '../config/config';
 import { YouTube } from '@mui/icons-material';
 
 import './ContentModal.css'
+import Carousel from './Carousel';
 
 const style = {
   position: 'absolute',
@@ -108,7 +109,9 @@ export default function ContentModal({ children, media_type, id }) {
                   <span className='ContentModal__description'>
                     {content.overview}
                   </span>
-                  <div></div>
+                  <div>
+                    <Carousel media_type={media_type} id={id} />
+                  </div>
                   <Button
                     variant='contained'
                     startIcon={<YouTube />}
@@ -120,7 +123,7 @@ export default function ContentModal({ children, media_type, id }) {
                   </Button>
                 </div>
               </div>
-            )}
+            )}ZPKL9aSgbCw
           </Box>
         </Fade>
       </Modal>
